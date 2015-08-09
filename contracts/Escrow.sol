@@ -10,19 +10,18 @@ contract Escrow {
     uint amount;
     uint dispute_resolution_fee = 5; //Percentage
     
-    function Escrow(address buyer, address seller) {
+    function setBuyer(uint _amount) {
+        buyer.account = msg.sender;
+        amount = _amount;
     }
     
-    function setBuyer(address buyerAccount) {
-        buyer.account = buyerAccount;
-    }
-    
-    function setSeller(address sellerAccount) {
-        seller.account = sellerAccount;
+    function setSeller(uint _amount) {
+        seller.account = msg.sender;
+        amount = _amount;
     }
     
     function complete() {
-        seller.account.send(amount);
+        seller.account.send(_amount);
     }
     
     function cancel() {
