@@ -20,8 +20,16 @@ contract Escrow {
         amount = _amount;
     }
     
+    function getBuyer() constant returns (address buyerAccount) {
+        return buyer.account;
+    }
+    
+    function getSeller() constant returns (address sellerAccount) {
+        return seller.account;
+    }
+    
     function complete() {
-        seller.account.send(_amount);
+        seller.account.send(amount);
     }
     
     function cancel() {
