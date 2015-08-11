@@ -36,3 +36,21 @@ contract Escrow {
         suicide(buyer.account);
     }
 }
+
+//This contract will create the Escrow contract for the users
+contract EscrowCreator {
+    function createEscrowBySeller(address seller, uint amount) returns (address tokenAddress) {
+        Escrow contract = new Escrow();
+        contract.setSeller(seller, amount)
+        return address(contract);
+    }
+    
+    function createEscrowByBuyer(address buyer, uint amount) returns (address tokenAddress) {
+        Escrow contract = new Escrow();
+        contract.setBuyer(buyer, amount)
+        return address(contract);
+    }
+    
+    function setArbitratorI(address arbitrator) {
+    }
+}
